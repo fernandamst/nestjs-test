@@ -1,0 +1,45 @@
+@startuml
+
+hide circle
+skinparam linetype ortho
+
+entity "Reptile" as reptile {
+  **id : string <<generated>> **
+  --
+  * **dietId : string <<FK>>**
+  *name : text
+  *activeAt : activePeriodEnum
+  *lineage : lineageEnum
+  *class: classEnum
+  *formOfReproduction: reproductionEnum
+  *size: string;
+  *lifespan: number
+  *diet: dietTypeEnum
+  *maintenanceLevel: maintenanceEnum
+  *createdAt: date
+  *updatedAt: date
+}
+
+
+
+entity "Diet" as diet {
+  * **id : string <<generated>> **
+  --
+  *name : text
+  *createdAt: date
+  *updatedAt: date
+}
+
+entity "Food" as food {
+  * **id : string <<generated>> **
+  --
+  * **dietId: string <<FK>>**
+  *name : text
+  *createdAt: date
+  *updatedAt: date
+}
+
+reptile }o-||diet
+diet ||--o{ food
+
+@enduml
