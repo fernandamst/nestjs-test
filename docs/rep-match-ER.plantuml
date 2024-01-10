@@ -7,20 +7,35 @@ entity "Reptile" as reptile {
   **id : string <<generated>> **
   --
   * **dietId : string <<FK>>**
+  * **lineageId : string <<FK>>**
   *name : text
   *activeAt : activePeriodEnum
-  *lineage : lineageEnum
-  *class: classEnum
   *formOfReproduction: reproductionEnum
   *size: string;
   *lifespan: number
-  *diet: dietTypeEnum
   *maintenanceLevel: maintenanceEnum
   *createdAt: date
   *updatedAt: date
 }
 
+entity "Order" as order {
+  * **id : string <<generated>> **
+  --
+  *name : text
+  *description: text
+  *createdAt: date
+  *updatedAt: date
+}
 
+entity "Lineage" as lineage {
+  * **id : string <<generated>> **
+  --
+  * **orderId : string <<FK>> **
+  *name : text
+  *description: text
+  *createdAt: date
+  *updatedAt: date
+}
 
 entity "Diet" as diet {
   * **id : string <<generated>> **
@@ -39,7 +54,9 @@ entity "Food" as food {
   *updatedAt: date
 }
 
-reptile }o-||diet
+reptile }o-|| diet
+reptile ||--|| lineage
+order ||-|{ lineage
 diet ||--o{ food
 
 @enduml
