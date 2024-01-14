@@ -1,7 +1,7 @@
-
-export class FoodEntity  {
-    id: number;
-    dietId: string;
+export class FoodEntity {
     name: string;
-    constructor(){}
+
+    constructor(name: string) {
+        this.name = name;
+    }
 }

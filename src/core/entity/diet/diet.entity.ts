@@ -1,15 +1,11 @@
+import { FoodEntity } from "@/core/entity/food/food.entity";
 
-export class ReptileEntity  {
-    id: number;
+export class DietEntity {
     name: string;
-    activeAt:string; //nocturnal, diurnal
-    lineage:string; //squamata, testudines, crocodilia, sphenodontia
-    class: string; //Anapsida, Parapsida, Diapsida
-    formOfReproduction: string; //viviparous, ovoviviparous, ectotherm
-    size: string;
-    lifespan:number;
-    maintenanceLevel: string; //high, low, medium
-    dietId: string; //carnivore, herbivore, omnivore
+    foods: FoodEntity[]
 
-    constructor(){}
+    constructor(name: string, foods: FoodEntity[]) {
+        this.name = name;
+        this.foods = foods;
+    }
 }
