@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  db:
+    container_name: repmatch
+    image: mysql:8.0
+    tty: true
+    restart: always
+    ports:
+      - ${MYSQL_HOST_PORT}:${MYSQL_CONTAINER_PORT}
+    environment:
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}

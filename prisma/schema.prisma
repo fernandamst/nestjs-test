@@ -58,7 +58,6 @@ enum reproductionEnum {
     ectotherm
 }
 
-//TODO: check if this should be a table 
 enum maintenanceEnum {
     undefined
     high
