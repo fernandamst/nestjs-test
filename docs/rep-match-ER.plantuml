@@ -57,6 +57,6 @@ entity "Food" as food {
 reptile }o-|| diet
 reptile ||--|| lineage
 order ||-|{ lineage
-diet ||--o{ food
+diet ||--|{ food
 
 @enduml
