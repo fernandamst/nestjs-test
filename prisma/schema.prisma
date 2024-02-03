@@ -8,41 +8,40 @@ datasource db {
 }
 
 model Diet {
-    id          String      @id @default(uuid())
-    name        String      @db.VarChar(255)
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
-    foods       Food[]
-    reptiles    Reptile[]
+    id        String    @id @default(uuid())
+    name      String    @db.VarChar(255)
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    foods     Food[]
+    reptiles  Reptile[]
 }
 
 model Food {
-    id          String      @id @default(uuid())
-    dietId      String?     @db.VarChar(255)
-    name        String      @db.VarChar(255)
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
-    diet        Diet?       @relation(fields: [dietId], references:[id])
+    id        String   @id @default(uuid())
+    dietId    String?  @db.VarChar(255)
+    name      String   @db.VarChar(255)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    diet      Diet?    @relation(fields: [dietId], references: [id])
 }
 
 model Order {
-    id          String      @id @default(uuid())
-    name        String      @db.VarChar(255)
-    description String      @db.Text
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
+    id          String    @id @default(uuid())
+    name        String    @db.VarChar(255)
+    description String    @db.Text
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
     lineages    Lineage[]
-    
 }
 
 model Lineage {
-    id          String      @id @default(uuid())
-    orderId     String?     @db.VarChar(255)
-    name        String      @db.VarChar(255)
-    description String      @db.Text
-    createdAt   DateTime    @default(now())
-    updatedAt   DateTime    @updatedAt
-    order       Order?      @relation(fields: [orderId], references:[id])
+    id          String   @id @default(uuid())
+    orderId     String?  @db.VarChar(255)
+    name        String   @db.VarChar(255)
+    description String   @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    order       Order?   @relation(fields: [orderId], references: [id])
 }
 
 enum activePeriodEnum {
@@ -66,15 +65,15 @@ enum maintenanceEnum {
 }
 
 model Reptile {
-    id                      String              @id @default(uuid())
-    dietId                  String?             @db.VarChar(255)
-    name                    String              @db.VarChar(255)
-    activeAt                activePeriodEnum    @default(undefined)
-    formOfReproduction      reproductionEnum    @default(undefined)
-    size                    String              @db.VarChar(10)
-    lifespan                Int                 @db.Int
-    maintenanceLevel        maintenanceEnum     @default(undefined)
-    createdAt               DateTime            @default(now())
-    updatedAt               DateTime            @updatedAt
-    diet                    Diet?               @relation(fields: [dietId], references:[id])
+    id                 String           @id @default(uuid())
+    dietId             String?          @db.VarChar(255)
+    name               String           @db.VarChar(255)
+    activeAt           activePeriodEnum @default(undefined)
+    formOfReproduction reproductionEnum @default(undefined)
+    size               String           @db.VarChar(10)
+    lifespan           Int              @db.Int
+    maintenanceLevel   maintenanceEnum  @default(undefined)
+    createdAt          DateTime         @default(now())
+    updatedAt          DateTime         @updatedAt
+    diet               Diet?            @relation(fields: [dietId], references: [id])
 }

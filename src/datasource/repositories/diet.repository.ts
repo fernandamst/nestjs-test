@@ -1,4 +1,4 @@
-import { DietDto } from "@/application/dto/request/create-diet/diet.dto";
+import { DietDto } from "@/application/dto/diet/request/create/diet.dto";
 import { Diet, PrismaClient } from "@prisma/client";
 
 export class DietRepository {

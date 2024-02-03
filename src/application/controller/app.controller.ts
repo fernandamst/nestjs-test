@@ -1,5 +1,6 @@
 
-import { DietDto } from '@/application/dto/request/create-diet/diet.dto';
+import { DietDto } from '@/application/dto/diet/request/create/diet.dto';
+import { CreateDietResponseDto } from '@/application/dto/diet/response/create/create-diet-response.dto';
 import { CreateDietService } from '@/core/entity/diet/use-cases/create/create.service';
 import { Body, Controller, Post } from '@nestjs/common';
 
@@ -10,7 +11,7 @@ export class AppController {
 
   //TODO: document with decorators when swagger config is implemented
   @Post('/diet')
-  createDiet(@Body() diet: DietDto): any {
-    return this.createDietService.execute(diet);
+  createDiet(@Body() diet: DietDto): Promise<CreateDietResponseDto> {
+    return this.createDietService.execute(diet)
   }
 }
