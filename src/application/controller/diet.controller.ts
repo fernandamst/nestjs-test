@@ -5,7 +5,7 @@ import { CreateDietService } from '@/core/entity/diet/use-cases/create/create.se
 import { Body, Controller, Post } from '@nestjs/common';
 
 @Controller()
-export class AppController {
+export class DietController {
   constructor(
     private readonly createDietService: CreateDietService) { }
 
