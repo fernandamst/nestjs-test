@@ -1,4 +1,4 @@
-import { AppController } from '@/application/controller/app.controller';
+import { DietController } from '@/application/controller/diet.controller';
 import { ReptileController } from '@/application/controller/reptile.controller';
 import { CreateDietService } from '@/core/entity/diet/use-cases/create/create.service';
 import { FoodPrismaCreateInputFactory } from '@/core/entity/food/factory/food-prisma-input.factory';
@@ -9,7 +9,7 @@ import { Module } from '@nestjs/common';
 
 @Module({
   imports: [DatasourceModule],
-  controllers: [AppController, ReptileController],
+  controllers: [DietController, ReptileController],
   providers: [CreateDietService, CreateFoodsService, FoodPrismaCreateInputFactory, CreateReptileService],
 })
 export class AppModule { }
